@@ -14,7 +14,7 @@ The web is full of high quality data in the form of tables that could be integra
 ## Check out the repository and configure your local machine
 ```
 #!bash
-$ git clone https://github.com/brando91/STAN.git
+$ git clone https://github.com/forlandi3/STAN.git
 $ cd STAN
 $ ./build-and-test.sh
 ```
