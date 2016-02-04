@@ -40,7 +40,12 @@ public class Handlers extends AbstractHandler {
 				new OntologiesPage(),
 				new KarmaAnnotationPage(new KarmaTextualAnnotator(), new KarmaNumericAnnotator()),
 				new AnnotationApiPage(),
-				new SuggestionsPage()
+				new SuggestionsPage(),
+				new PreviewPage(),
+				new PreviewTablePage(),
+				new RowsPreviewPage(),
+				new UpdatePreviewPage(),
+				new PreviewTableFromUrlPage()
 		};
 	}
 
@@ -79,7 +84,7 @@ public class Handlers extends AbstractHandler {
 		catch(Exception ex){
 			response.setStatus(500);
 			LogEvents.stan().error(ex.getMessage(), ex);
-			return errorPage(500, "An error occurred while serving the request. <br> " + ex);
+			return errorPage(500, "An error occurred while serving the request. <br> " + ex + "<br>" + path);
 		}
 	}
 

@@ -136,15 +136,15 @@ function currentContext(column){
 
 /****************************************** Utils **********************************************/
 
-function loading() {
+function loading(obj) {
 	if($('#table').val() != '' && $('#separator').val() != ''){
-		$('#upload').text("Uploading...");
+		$(obj).text("Uploading...");
 	}
 }
 
-function loadingUrl() {
+function loadingUrl(obj) {
 	if($('#url').val() != '' && $('#separator-url').val() != ''){
-		$('#upload-url').text("Uploading...");
+		$(obj).text("Downloading...");
 	}	
 }
 

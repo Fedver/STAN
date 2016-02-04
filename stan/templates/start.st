@@ -37,7 +37,7 @@ start(notifications, breadcrumb) ::= <<
 					</div>
 					
 					<p>
-						<small>Specify a separator character, eventually a text delimiter and if the table has an header:</small>
+						<small>Set a separator character, a text delimiter if needed and check if the table has a header:</small>
 					</p>
 					<div class="form-group">
 					    <label for="separator" class="col-sm-2 control-label">Separator</label>
@@ -62,7 +62,8 @@ start(notifications, breadcrumb) ::= <<
 				  	</div>
 				  	
 				  	<br>
-					<button type="submit" id="upload" name="upload" onclick="loading()" class="btn btn-primary">Upload</button>
+					<button type="submit" id="upload" name="upload" onclick="loading(this)" class="btn btn-primary">Upload</button>
+					<button type="submit" id="preview" name="preview" onclick="loading(this)" class="btn btn-primary" formaction="/preview-table">Preview</button>
 				</form>
 		
 			</div>
@@ -80,7 +81,7 @@ start(notifications, breadcrumb) ::= <<
 					</div>
 					
 					<p>
-						<small>Specify a separator character, eventually a text delimiter and if the table has an header:</small>
+						<small>Set a separator character, a text delimiter if needed and check if the table has a header:</small>
 					</p>
 					<div class="form-group">
 					    <label for="separator" class="col-sm-2 control-label">Separator</label>
@@ -105,13 +106,13 @@ start(notifications, breadcrumb) ::= <<
 				  	</div>
 				  	
 				  	<br>
-					<button type="submit" id="upload-url" name="upload" onclick="loadingUrl()" class="btn btn-primary">Upload</button>
+					<button type="submit" id="upload-url" name="upload" onclick="loadingUrl(this)" class="btn btn-primary">Upload</button>
+					<button type="submit" id="preview-url" name="preview" onclick="loadingUrl(this)" class="btn btn-primary" formaction="/preview-table-url">Preview</button>
 				</form>
 		
 			</div>
 	    </div>
 	</div>
-  
-	
+  	
 	$footer()$
 >>

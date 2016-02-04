@@ -4,6 +4,7 @@ import it.disco.unimib.stan.core.Row;
 import it.disco.unimib.stan.core.SemanticAnnotation;
 
 import java.util.ArrayList;
+//import javax.swing.JOptionPane;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroupDir;
@@ -71,6 +72,27 @@ public class Template{
 
 	public Template hasPreviousWork(boolean hasPrevious) {
 		template.add("hasPrevious", hasPrevious);
+		return this;
+	}
+	
+	public Template separator(String separator) {
+		template.add("separator", separator);
+		return this;
+	}
+	
+	public Template delimiter(String delimiter) {
+		delimiter = delimiter.replace("\"", "&quot;");
+		template.add("delimiter", delimiter);
+		return this;
+	}
+	
+	public Template tablename(String tablename) {
+		template.add("tablename", tablename);
+		return this;
+	}
+	
+	public Template hasHeader(boolean hasHeader) {
+		if (hasHeader) template.add("hasheader", "checked");
 		return this;
 	}
 }

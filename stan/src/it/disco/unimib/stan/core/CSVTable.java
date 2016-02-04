@@ -9,12 +9,14 @@ public class CSVTable{
 	private boolean hasHeader;
 	private String separator;
 	private String textDelimiter;
+	private int maxRows;
 
 	public CSVTable(Resource table) {
 		this.table = table;
 		this.hasHeader = false;
 		this.separator = "\\|";
 		this.textDelimiter = "";
+		this.maxRows = 0;
 	}
 	
 	public String separator() {
@@ -35,6 +37,11 @@ public class CSVTable{
 		return this;
 	}
 	
+	public CSVTable setMaxRows(int newRows){
+		this.maxRows = newRows;
+		return this;
+	}
+	
 	public boolean hasHeader() {
 		return this.hasHeader;
 	}
@@ -52,8 +59,13 @@ public class CSVTable{
 		ArrayList<String> lines = this.table.lines();
 		ArrayList<Column> columns = initializeColumns(lines);
 		ArrayList<Row> rows = new ArrayList<Row>();
+		int numberOfRowsReturned;
 		
-		for(int row = 0; row < lines.size(); row++){
+		/* maxRows <= 0 means return all the CSV rows.
+		 maxRows > 0 means return only the first "maxRows" rows of the CSV table.*/
+		numberOfRowsReturned = this.maxRows <= 0 ? lines.size() : this.maxRows;
+		
+		for(int row = 0; row < numberOfRowsReturned; row++){
 			if(firstLineWithHeaderOrEmptyLine(lines, row)) continue;
 			
 			String[] splittedLine = split(lines.get(row));
@@ -76,8 +88,13 @@ public class CSVTable{
 	public ArrayList<Column> columns() throws Exception {
 		ArrayList<String> lines = this.table.lines();
 		ArrayList<Column> columns = initializeColumns(lines);
+		int numberOfRowsReturned;
 		
-		for(int row = 0; row < lines.size(); row++){
+		/* maxRows <= 0 means return all the CSV rows.
+		 maxRows > 0 means return only the first "maxRows" rows of the CSV table.*/
+		numberOfRowsReturned = this.maxRows <= 0 ? lines.size() : this.maxRows;
+		
+		for(int row = 0; row < numberOfRowsReturned; row++){
 			if(firstLineWithHeaderOrEmptyLine(lines, row)) continue;
 			
 			String[] splittedLine = split(lines.get(row));
